@@ -51,7 +51,7 @@ namespace FirstHomeWork
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(516, 310);
+            this.lblTitle.Location = new System.Drawing.Point(516, 380);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(500, 73);
             this.lblTitle.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace FirstHomeWork
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(666, 495);
+            this.btnStart.Location = new System.Drawing.Point(666, 524);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(200, 50);
             this.btnStart.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace FirstHomeWork
             this.btnOptions.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnOptions.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnOptions.ForeColor = System.Drawing.Color.White;
-            this.btnOptions.Location = new System.Drawing.Point(666, 683);
+            this.btnOptions.Location = new System.Drawing.Point(666, 702);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(200, 50);
             this.btnOptions.TabIndex = 3;
@@ -94,10 +94,10 @@ namespace FirstHomeWork
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Name = "mainLayout";
             this.mainLayout.RowCount = 4;
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.17746F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.73861F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.56595F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.7482F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.14628F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.41966F));
             this.mainLayout.Size = new System.Drawing.Size(1533, 834);
             this.mainLayout.TabIndex = 0;
             // 
@@ -108,7 +108,7 @@ namespace FirstHomeWork
             this.pictureBoxLogo.ImageRotate = 0F;
             this.pictureBoxLogo.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(1527, 229);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(1527, 349);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
