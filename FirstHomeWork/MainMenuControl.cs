@@ -29,5 +29,12 @@ namespace FirstHomeWork
         {
             parent.LoadControl(new OptionsControl(parent));
         }
+
+        private void table_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+      
     }
 }
