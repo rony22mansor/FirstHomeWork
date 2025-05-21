@@ -35,6 +35,9 @@ namespace FirstHomeWork
 
         }
 
-      
+        private void title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
