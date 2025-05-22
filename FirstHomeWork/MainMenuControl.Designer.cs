@@ -35,9 +35,9 @@ namespace FirstHomeWork
             this.mainPanel = new System.Windows.Forms.Panel();
             this.vStack = new System.Windows.Forms.TableLayoutPanel();
             this.optionsBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.logo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.startBtn = new Guna.UI2.WinForms.Guna2Button();
             this.title = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.logo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.mainPanel.SuspendLayout();
             this.vStack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -107,6 +107,18 @@ namespace FirstHomeWork
             this.optionsBtn.UseTransparentBackground = true;
             this.optionsBtn.Click += new System.EventHandler(this.btnOptions_Click);
             // 
+            // logo
+            // 
+            this.logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logo.Image = global::FirstHomeWork.Properties.Resources.logo_png;
+            this.logo.ImageRotate = 0F;
+            this.logo.Location = new System.Drawing.Point(3, 3);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(1327, 292);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -151,23 +163,11 @@ namespace FirstHomeWork
             this.title.Location = new System.Drawing.Point(10, 308);
             this.title.Margin = new System.Windows.Forms.Padding(10, 10, 10, 70);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(1313, 43);
+            this.title.Size = new System.Drawing.Size(1313, 74);
             this.title.TabIndex = 1;
             this.title.Text = "Spot The Difference";
             this.title.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.title.Click += new System.EventHandler(this.title_Click);
-            // 
-            // logo
-            // 
-            this.logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logo.Image = global::FirstHomeWork.Properties.Resources.logo_png;
-            this.logo.ImageRotate = 0F;
-            this.logo.Location = new System.Drawing.Point(3, 3);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(1327, 292);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
             // 
             // MainMenuControl
             // 
