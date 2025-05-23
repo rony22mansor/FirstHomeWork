@@ -4,6 +4,18 @@
     {
         private System.ComponentModel.IContainer components = null;
 
+
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.TableLayoutPanel vStack;
+        private Guna.UI2.WinForms.Guna2Button saveBtn;
+        private Guna.UI2.WinForms.Guna2HtmlLabel title;
+        private System.Windows.Forms.Panel playerNamePanel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblPlayerName;
+        private Guna.UI2.WinForms.Guna2TextBox txtPlayerName;
+        private System.Windows.Forms.Panel soundVolumePanel;
+        private Guna.UI2.WinForms.Guna2TrackBar volumeTrackBar;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblSoundVolume;
+
         /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
@@ -22,18 +34,18 @@
         {
             this.mainPanel = new System.Windows.Forms.Panel();
             this.vStack = new System.Windows.Forms.TableLayoutPanel();
-            this.startBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
             this.title = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.playerNamePanel = new System.Windows.Forms.Panel();
             this.lblPlayerName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtPlayerName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.soundVolumePanel = new System.Windows.Forms.Panel();
+            this.lblSoundVolume = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.volumeTrackBar = new Guna.UI2.WinForms.Guna2TrackBar();
             this.mainPanel.SuspendLayout();
             this.vStack.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.playerNamePanel.SuspendLayout();
+            this.soundVolumePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -51,10 +63,10 @@
             // 
             this.vStack.ColumnCount = 1;
             this.vStack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.vStack.Controls.Add(this.startBtn, 0, 3);
+            this.vStack.Controls.Add(this.saveBtn, 0, 3);
             this.vStack.Controls.Add(this.title, 0, 0);
-            this.vStack.Controls.Add(this.panel2, 0, 1);
-            this.vStack.Controls.Add(this.panel1, 0, 2);
+            this.vStack.Controls.Add(this.playerNamePanel, 0, 1);
+            this.vStack.Controls.Add(this.soundVolumePanel, 0, 2);
             this.vStack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vStack.Location = new System.Drawing.Point(100, 200);
             this.vStack.Margin = new System.Windows.Forms.Padding(0);
@@ -67,35 +79,35 @@
             this.vStack.Size = new System.Drawing.Size(1333, 434);
             this.vStack.TabIndex = 1;
             // 
-            // startBtn
+            // saveBtn
             // 
-            this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Animated = true;
-            this.startBtn.BackColor = System.Drawing.Color.Transparent;
-            this.startBtn.BorderColor = System.Drawing.Color.Transparent;
-            this.startBtn.BorderRadius = 16;
-            this.startBtn.BorderThickness = 5;
-            this.startBtn.DefaultAutoSize = true;
-            this.startBtn.Font = new System.Drawing.Font("Segoe UI Black", 16F);
-            this.startBtn.ForeColor = System.Drawing.Color.Black;
-            this.startBtn.Location = new System.Drawing.Point(500, 338);
-            this.startBtn.Margin = new System.Windows.Forms.Padding(500, 10, 500, 25);
-            this.startBtn.Name = "startBtn";
-            this.startBtn.PressedDepth = 12;
-            this.startBtn.ShadowDecoration.BorderRadius = 16;
-            this.startBtn.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.startBtn.ShadowDecoration.Depth = 60;
-            this.startBtn.ShadowDecoration.Enabled = true;
-            this.startBtn.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.startBtn.Size = new System.Drawing.Size(333, 71);
-            this.startBtn.TabIndex = 11;
-            this.startBtn.Text = "Save";
-            this.startBtn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.startBtn.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.startBtn.UseTransparentBackground = true;
-            this.startBtn.Click += new System.EventHandler(this.btnBack_Click);
+            this.saveBtn.Animated = true;
+            this.saveBtn.BackColor = System.Drawing.Color.Transparent;
+            this.saveBtn.BorderColor = System.Drawing.Color.Transparent;
+            this.saveBtn.BorderRadius = 16;
+            this.saveBtn.BorderThickness = 5;
+            this.saveBtn.DefaultAutoSize = true;
+            this.saveBtn.Font = new System.Drawing.Font("Segoe UI Black", 16F);
+            this.saveBtn.ForeColor = System.Drawing.Color.Black;
+            this.saveBtn.Location = new System.Drawing.Point(500, 338);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(500, 10, 500, 25);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.PressedDepth = 12;
+            this.saveBtn.ShadowDecoration.BorderRadius = 16;
+            this.saveBtn.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.saveBtn.ShadowDecoration.Depth = 60;
+            this.saveBtn.ShadowDecoration.Enabled = true;
+            this.saveBtn.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.saveBtn.Size = new System.Drawing.Size(333, 71);
+            this.saveBtn.TabIndex = 11;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.saveBtn.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.saveBtn.UseTransparentBackground = true;
+            this.saveBtn.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // title
             // 
@@ -113,17 +125,17 @@
             this.title.Text = "Options";
             this.title.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel2
+            // playerNamePanel
             // 
-            this.panel2.Controls.Add(this.lblPlayerName);
-            this.panel2.Controls.Add(this.txtPlayerName);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(500, 121);
-            this.panel2.Margin = new System.Windows.Forms.Padding(500, 20, 500, 20);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(333, 82);
-            this.panel2.TabIndex = 8;
+            this.playerNamePanel.Controls.Add(this.lblPlayerName);
+            this.playerNamePanel.Controls.Add(this.txtPlayerName);
+            this.playerNamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playerNamePanel.Location = new System.Drawing.Point(500, 121);
+            this.playerNamePanel.Margin = new System.Windows.Forms.Padding(500, 20, 500, 20);
+            this.playerNamePanel.Name = "playerNamePanel";
+            this.playerNamePanel.Padding = new System.Windows.Forms.Padding(2);
+            this.playerNamePanel.Size = new System.Drawing.Size(333, 82);
+            this.playerNamePanel.TabIndex = 8;
             // 
             // lblPlayerName
             // 
@@ -162,28 +174,28 @@
             this.txtPlayerName.Size = new System.Drawing.Size(329, 42);
             this.txtPlayerName.TabIndex = 5;
             // 
-            // panel1
+            // soundVolumePanel
             // 
-            this.panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.panel1.Controls.Add(this.volumeTrackBar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(500, 243);
-            this.panel1.Margin = new System.Windows.Forms.Padding(500, 20, 500, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.panel1.Size = new System.Drawing.Size(333, 65);
-            this.panel1.TabIndex = 7;
+            this.soundVolumePanel.Controls.Add(this.lblSoundVolume);
+            this.soundVolumePanel.Controls.Add(this.volumeTrackBar);
+            this.soundVolumePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.soundVolumePanel.Location = new System.Drawing.Point(500, 243);
+            this.soundVolumePanel.Margin = new System.Windows.Forms.Padding(500, 20, 500, 20);
+            this.soundVolumePanel.Name = "soundVolumePanel";
+            this.soundVolumePanel.Padding = new System.Windows.Forms.Padding(2);
+            this.soundVolumePanel.Size = new System.Drawing.Size(333, 65);
+            this.soundVolumePanel.TabIndex = 7;
             // 
-            // guna2HtmlLabel1
+            // lblSoundVolume
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(2, 2);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(145, 30);
-            this.guna2HtmlLabel1.TabIndex = 5;
-            this.guna2HtmlLabel1.Text = "Sound Volume:";
+            this.lblSoundVolume.BackColor = System.Drawing.Color.Transparent;
+            this.lblSoundVolume.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSoundVolume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoundVolume.Location = new System.Drawing.Point(2, 2);
+            this.lblSoundVolume.Name = "lblSoundVolume";
+            this.lblSoundVolume.Size = new System.Drawing.Size(145, 30);
+            this.lblSoundVolume.TabIndex = 5;
+            this.lblSoundVolume.Text = "Sound Volume:";
             // 
             // volumeTrackBar
             // 
@@ -205,25 +217,15 @@
             this.mainPanel.ResumeLayout(false);
             this.vStack.ResumeLayout(false);
             this.vStack.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.playerNamePanel.ResumeLayout(false);
+            this.playerNamePanel.PerformLayout();
+            this.soundVolumePanel.ResumeLayout(false);
+            this.soundVolumePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.TableLayoutPanel vStack;
-        private Guna.UI2.WinForms.Guna2Button startBtn;
-        private Guna.UI2.WinForms.Guna2HtmlLabel title;
-        private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblPlayerName;
-        private Guna.UI2.WinForms.Guna2TextBox txtPlayerName;
-        private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2TrackBar volumeTrackBar;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }

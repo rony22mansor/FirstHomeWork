@@ -13,7 +13,7 @@ namespace FirstHomeWork.Helpers
     public enum GameMode
     {
         Timer,
-        AttemptCounter
+        Attempts
     }
 
 }

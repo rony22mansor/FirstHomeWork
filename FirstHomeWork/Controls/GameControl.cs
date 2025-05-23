@@ -1,7 +1,9 @@
 ﻿using FirstHomeWork.Helpers;
+using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using System;
 using System.Drawing;
-using System.Media;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FirstHomeWork
@@ -9,132 +11,135 @@ namespace FirstHomeWork
     public partial class GameControl : UserControl
     {
 
-        
+
         private MainForm parent;
         private int timeLeftInSeconds;
         private DifficultyLevel currentDifficulty;
+        private Guna2Panel selectedPanel;
+        private int selectedLevelNumber;
 
         public GameControl(MainForm parentForm, DifficultyLevel difficulty = DifficultyLevel.Hard)
         {
             InitializeComponent();
-            SetDifficulty(difficulty);
-            InitializeTimer();
-            UpdateTimerDisplay();
+            LoadLevelImages();
+            PopulateDropdowns();
             parent = parentForm;
+            selectedLevelNumber = 1;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            DifficultyLevel difficulty = SelectedDifficulty;
+            GameMode gameMode = SelectedPlayerMode;
+            parent.LoadControl(new GameplayControl(parent, gameMode, selectedLevelNumber, difficulty));
         }
 
 
-
-        private void btnBack_Click(object sender, EventArgs e)
+        private void LoadLevelImages()
         {
-            parent.LoadControl(new MainMenuControl(parent));
-            gameTimer.Stop();
+            string imagePath = Path.Combine(Application.StartupPath, "Resources", "Levels");
 
-
-            if (this.Parent is Form parentForm)
+            for (int i = 1; i <= 5; i++)
             {
-                parentForm.Controls.Remove(this);
-
-            }
-        }
-        public void SetDifficulty(DifficultyLevel difficulty)
-        {
-            currentDifficulty = difficulty;
-
-            switch (difficulty)
-            {
-                case DifficultyLevel.Easy:
-                    timeLeftInSeconds = 3 * 60; // 3 دقائق
-                    break;
-                case DifficultyLevel.Normal:
-                    timeLeftInSeconds = 2 * 60; // 2 دقيقة
-                    break;
-                case DifficultyLevel.Hard:
-                    timeLeftInSeconds = 1 * 60; // 1 دقيقة
-                    break;
-            }
-        }
-
-
-        private void InitializeTimer()
-        {
-            gameTimer = new Timer();
-            gameTimer.Interval = 1000;
-            gameTimer.Tick += GameTimer_Tick;
-            gameTimer.Start();
-        }
-
-        private void GameTimer_Tick(object sender, EventArgs e)
-        {
-            timeLeftInSeconds--;
-            UpdateTimerDisplay();
-
-            if (timeLeftInSeconds <= 10)
-            {
-                SystemSounds.Beep.Play();
-            }
-
-            if (timeLeftInSeconds <= 10) 
-            {
-                lblTimer.ForeColor = Color.Red;
-
-
-                if (timeLeftInSeconds % 2 == 0)
+                string imgPath = Path.Combine(imagePath, $"level{i}.jpg");
+                if (File.Exists(imgPath))
                 {
-                    lblTimer.ForeColor = Color.DarkRed;
-                }
-                else
-                {
-                    lblTimer.ForeColor = Color.Red;
-                }
-            }
+                    Guna2PictureBox pb = new Guna2PictureBox
+                    {
+                        Image = Image.FromFile(imgPath),
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Dock = DockStyle.Fill,
+                        BackColor = Color.White,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        FillColor = Color.Transparent,
+                        Cursor = Cursors.Hand
+                    };
 
-            if (timeLeftInSeconds <= 0)
-            {
-                gameTimer.Stop();
-                lblTimer.ForeColor = Color.DarkRed;
-                MessageBox.Show("انتهى الوقت!", "Game Over",
-                              MessageBoxButtons.OK,
-                              MessageBoxIcon.Exclamation);
+                    Guna2Panel panel = new Guna2Panel
+                    {
+                        Size = new Size(250, 250),
+                        Padding = new Padding(14),
+                        Margin = new Padding(20, 0, 20, 0),
+                        FillColor = Color.Transparent,
+                        BorderRadius = 10,
 
-                // return to main menu after the timer finished
-                parent.LoadControl(new MainMenuControl(parent));
 
-                if (this.Parent is Form parentForm)
-                {
-                    parentForm.Controls.Remove(this);
+                        Tag = i
+                    };
+                    panel.ShadowDecoration.BorderRadius = 10;
+                    panel.ShadowDecoration.Enabled = true;
+                    panel.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+                    panel.ShadowDecoration.Depth = 60;
+                    panel.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 8);
+
+                    pb.Click += (s, e) =>
+                    {
+                        if (selectedPanel != null)
+                        {
+                            selectedPanel.FillColor = Color.Transparent;
+                        }
+                        selectedPanel = panel;
+                        selectedPanel.BorderRadius = 10;
+                        selectedPanel.FillColor = Color.FromArgb(94, 148, 255);
+                        selectedLevelNumber = (int)panel.Tag;
+                    };
+
+                    panel.Controls.Add(pb);
+                    levels.Controls.Add(panel);
+
+                    if (i == 1)
+                    {
+                        selectedPanel = panel;
+                        selectedPanel.BorderRadius = 10;
+                        selectedPanel.FillColor = Color.FromArgb(94, 148, 255);
+                        selectedLevelNumber = 1;
+                    }
                 }
             }
         }
 
-        private void UpdateTimerDisplay()
+        private void PopulateDropdowns()
         {
+            difficultyDropDown.DataSource = Enum.GetValues(typeof(DifficultyLevel));
+            difficultyDropDown.SelectedIndex = 0;
 
-            int minutes = timeLeftInSeconds / 60;
-            int seconds = timeLeftInSeconds % 60;
-            lblTimer.Text = $"{minutes:00}:{seconds:00}";
+            gameModeDropDown.DataSource = Enum.GetValues(typeof(GameMode));
+            gameModeDropDown.SelectedIndex = 0;
+        }
 
-           
-            if (timeLeftInSeconds <= 10)
+
+        public DifficultyLevel SelectedDifficulty
+        {
+            get
             {
-                lblTimer.ForeColor = Color.Red;
+                if (difficultyDropDown.SelectedItem != null)
+                {
+                    return (DifficultyLevel)difficultyDropDown.SelectedItem;
+                }
+                return DifficultyLevel.Easy;
             }
         }
 
-        public void ResetTimer(int minutes = 1)
+        public GameMode SelectedPlayerMode
         {
-
-            SetDifficulty(currentDifficulty);
-            gameTimer.Stop();
-            gameTimer.Start();
-            lblTimer.ForeColor = Color.Black;
-            UpdateTimerDisplay();
+            get
+            {
+                if (gameModeDropDown.SelectedItem != null)
+                {
+                    return (GameMode)gameModeDropDown.SelectedItem;
+                }
+                return GameMode.Attempts;
+            }
         }
 
-        private void GameControl_Load(object sender, EventArgs e)
+        private void difficulty_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Console.WriteLine($"Difficulty changed to: {SelectedDifficulty}");
+        }
 
+        private void gameMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Console.WriteLine($"Player Mode changed to: {SelectedPlayerMode}");
         }
     }
 }
-
