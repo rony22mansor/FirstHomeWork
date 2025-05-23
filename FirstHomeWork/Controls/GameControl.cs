@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using FirstHomeWork.Helpers;
+using System;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstHomeWork
@@ -14,7 +9,7 @@ namespace FirstHomeWork
     public partial class GameControl : UserControl
     {
 
-        public enum DifficultyLevel { Easy, Normal, Hard }
+        
         private MainForm parent;
         private int timeLeftInSeconds;
         private DifficultyLevel currentDifficulty;
