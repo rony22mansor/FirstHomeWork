@@ -107,7 +107,7 @@
             this.saveBtn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.saveBtn.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.saveBtn.UseTransparentBackground = true;
-            this.saveBtn.Click += new System.EventHandler(this.btnBack_Click);
+            this.saveBtn.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // title
             // 
@@ -147,7 +147,6 @@
             this.lblPlayerName.Size = new System.Drawing.Size(129, 30);
             this.lblPlayerName.TabIndex = 4;
             this.lblPlayerName.Text = "Player Name:";
-            this.lblPlayerName.Click += new System.EventHandler(this.lblPlayerName_Click);
             // 
             // txtPlayerName
             // 
