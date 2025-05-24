@@ -3,7 +3,9 @@ using System;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
-
+using System.Media; 
+using System.Reflection;
+using System.IO;
 namespace FirstHomeWork
 {
     public partial class GameplayControl : UserControl
@@ -15,24 +17,50 @@ namespace FirstHomeWork
         private DifficultyLevel currentDifficulty;
         private GameMode selectedGameMode;
         private int selectedLevel;
+        private int attemptsLeft;
+        private bool gameOver = false;
+        private bool isProcessingClick = false;
         public GameplayControl(MainForm parentForm, GameMode gameMode, int level, DifficultyLevel difficulty = DifficultyLevel.Hard)
         {
             Console.WriteLine("level: " + (level));
             Console.WriteLine("difficulty: " + (difficulty));
             Console.WriteLine("gameMode: " + (gameMode));
+            selectedGameMode = gameMode;
+            selectedLevel = level;
             InitializeComponent();
             SetDifficulty(difficulty);
             InitializeTimer();
             UpdateTimerDisplay();
+            InitializeGameElements();
             parent = parentForm;
         }
+
+        private void InitializeGameElements()
+        {
+            if (selectedGameMode == GameMode.Timer)
+            {
+                InitializeTimer();
+                UpdateTimerDisplay();
+                lblAttempts.Visible = false;
+                lblTimer.Visible = true;
+            }
+            else // Attempts mode
+            {
+                InitializeAttempts();
+                UpdateAttemptsDisplay();
+                lblTimer.Visible = false;
+                lblAttempts.Visible = true;
+            }
+        }
+
 
 
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             parent.LoadControl(new GameControl(parent));
-            gameTimer.Stop();
+            if (gameTimer !=null) { gameTimer.Stop(); }
+            
 
 
             if (this.Parent is Form parentForm)
@@ -48,13 +76,16 @@ namespace FirstHomeWork
             switch (difficulty)
             {
                 case DifficultyLevel.Easy:
-                    timeLeftInSeconds = 3 * 60; // 3 دقائق
+                    timeLeftInSeconds = 3 * 60;
+                    attemptsLeft = 15;
                     break;
                 case DifficultyLevel.Normal:
-                    timeLeftInSeconds = 2 * 60; // 2 دقيقة
+                    timeLeftInSeconds = 2 * 60;
+                    attemptsLeft = 10; 
                     break;
                 case DifficultyLevel.Hard:
-                    timeLeftInSeconds = 1 * 60; // 1 دقيقة
+                    timeLeftInSeconds = 1 * 60;
+                    attemptsLeft = 8;
                     break;
             }
         }
@@ -62,10 +93,29 @@ namespace FirstHomeWork
 
         private void InitializeTimer()
         {
+            if (gameTimer != null)
+            {
+                gameTimer.Tick -= GameTimer_Tick; 
+                gameTimer.Stop();
+                gameTimer.Dispose();
+            }
+
             gameTimer = new Timer();
             gameTimer.Interval = 1000;
             gameTimer.Tick += GameTimer_Tick;
             gameTimer.Start();
+        }
+
+
+        private void InitializeAttempts()
+        {
+            
+            if (gameTimer != null)
+            {
+                gameTimer.Stop();
+                gameTimer.Dispose();
+                gameTimer = null;
+            }
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -75,7 +125,7 @@ namespace FirstHomeWork
 
             if (timeLeftInSeconds <= 10)
             {
-                SystemSounds.Beep.Play();
+                PlayCustomSound();
             }
 
             if (timeLeftInSeconds <= 10)
@@ -101,7 +151,7 @@ namespace FirstHomeWork
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Exclamation);
 
-                // return to main menu after the timer finished
+               
                 parent.LoadControl(new MainMenuControl(parent));
 
                 if (this.Parent is Form parentForm)
@@ -110,6 +160,25 @@ namespace FirstHomeWork
                 }
             }
         }
+
+        private void PlayCustomSound()
+        {
+           
+            
+                
+                string soundPath = @"Resources\Sounds\Alarm_Clock_Sound.wav";
+                if (File.Exists(soundPath))
+                {
+                    var player = new SoundPlayer(soundPath);
+                    player.Play();
+                }
+                else
+                {
+                    SystemSounds.Beep.Play();
+                }
+            
+        }
+
 
         private void UpdateTimerDisplay()
         {
@@ -125,19 +194,96 @@ namespace FirstHomeWork
             }
         }
 
-        public void ResetTimer(int minutes = 1)
+
+        private void UpdateAttemptsDisplay()
+        {
+            lblAttempts.Text = $"Attempts: {attemptsLeft}";
+
+            if (attemptsLeft <= 3) 
+            {
+                lblAttempts.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblAttempts.ForeColor = Color.Black;
+            }
+        }
+
+
+
+
+
+       /* private void GameplayControl_MouseDown(object sender, MouseEventArgs e)
         {
 
+
+            if (e.Button == MouseButtons.Left && selectedGameMode == GameMode.Attempts && !gameOver)
+            {
+                DecrementAttempt();
+            }
+        }
+
+        public void DecrementAttempt()
+        {
+            if (attemptsLeft > 0)
+            {
+                attemptsLeft--;
+                UpdateAttemptsDisplay();
+
+               
+                this.BackColor = Color.FromArgb(255, 200, 200);
+                Timer colorTimer = new Timer();
+                colorTimer.Interval = 200;
+                colorTimer.Tick += (s, e) => {
+                    this.BackColor = Color.White;
+                    colorTimer.Stop();
+                };
+                colorTimer.Start();
+
+                SystemSounds.Beep.Play();
+
+                if (attemptsLeft <= 0)
+                {
+                    gameOver = true;
+                    MessageBox.Show("انتهت جميع المحاولات!", "Game Over",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Exclamation);
+                    ReturnToMainMenu();
+                }
+            }
+        }
+       */
+
+        private void ReturnToMainMenu()
+        {
+            parent.LoadControl(new MainMenuControl(parent));
+            if (this.Parent is Form parentForm)
+            {
+                parentForm.Controls.Remove(this);
+            }
+        }
+
+
+        public void ResetGameElements()
+        {
             SetDifficulty(currentDifficulty);
-            gameTimer.Stop();
-            gameTimer.Start();
-            lblTimer.ForeColor = Color.Black;
-            UpdateTimerDisplay();
+
+            if (selectedGameMode == GameMode.Timer)
+            {
+                gameTimer.Stop();
+                gameTimer.Start();
+                lblTimer.ForeColor = Color.Black;
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                UpdateAttemptsDisplay();
+                lblAttempts.ForeColor = Color.Black;
+            }
         }
 
         private void GameControl_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
