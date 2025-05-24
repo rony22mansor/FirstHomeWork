@@ -75,7 +75,6 @@ namespace FirstHomeWork
             this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.70397F));
             this.vStack.Size = new System.Drawing.Size(1333, 634);
             this.vStack.TabIndex = 1;
-            this.vStack.Paint += new System.Windows.Forms.PaintEventHandler(this.table_Paint);
             // 
             // optionsBtn
             // 
@@ -167,7 +166,6 @@ namespace FirstHomeWork
             this.title.TabIndex = 1;
             this.title.Text = "Spot The Difference";
             this.title.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.title.Click += new System.EventHandler(this.title_Click);
             // 
             // MainMenuControl
             // 

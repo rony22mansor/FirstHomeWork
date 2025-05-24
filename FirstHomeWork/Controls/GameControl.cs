@@ -1,6 +1,5 @@
 ﻿using FirstHomeWork.Helpers;
 using Guna.UI2.WinForms;
-using Guna.UI2.WinForms.Suite;
 using System;
 using System.Drawing;
 using System.IO;
@@ -10,8 +9,6 @@ namespace FirstHomeWork
 {
     public partial class GameControl : UserControl
     {
-
-
         private MainForm parent;
         private int timeLeftInSeconds;
         private DifficultyLevel currentDifficulty;
@@ -34,12 +31,11 @@ namespace FirstHomeWork
             parent.LoadControl(new GameplayControl(parent, gameMode, selectedLevelNumber, difficulty));
         }
 
-
         private void LoadLevelImages()
         {
             string imagePath = Path.Combine(Application.StartupPath, "Resources", "Levels");
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 string imgPath = Path.Combine(imagePath, $"level{i}.jpg");
                 if (File.Exists(imgPath))
@@ -62,7 +58,6 @@ namespace FirstHomeWork
                         Margin = new Padding(20, 0, 20, 0),
                         FillColor = Color.Transparent,
                         BorderRadius = 10,
-
 
                         Tag = i
                     };
@@ -107,7 +102,6 @@ namespace FirstHomeWork
             gameModeDropDown.SelectedIndex = 0;
         }
 
-
         public DifficultyLevel SelectedDifficulty
         {
             get
@@ -140,6 +134,11 @@ namespace FirstHomeWork
         private void gameMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Console.WriteLine($"Player Mode changed to: {SelectedPlayerMode}");
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            parent.LoadControl(new MainMenuControl(parent));
         }
     }
 }
