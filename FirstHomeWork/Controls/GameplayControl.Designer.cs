@@ -7,9 +7,11 @@
         /// </summary>
         /// 
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTimer;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblAttempts;
         private System.Windows.Forms.Timer gameTimer;
         private System.ComponentModel.IContainer components = null;
         private Guna.UI2.WinForms.Guna2Button btnBack;
+        private Guna.UI2.WinForms.Guna2Panel gameInfoPanel;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -34,8 +36,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
-            this.lblTimer = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.gameInfoPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblTimer = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblAttempts = new Guna.UI2.WinForms.Guna2HtmlLabel();
+           // this.MouseDown += new System.Windows.Forms.MouseEventHandler(GameplayControl_MouseDown);
+
+
+
             this.SuspendLayout();
             // 
             // btnBack
@@ -60,15 +68,33 @@
             this.lblTimer.TabIndex = 2;
             this.lblTimer.Text = "01:00";
             this.lblTimer.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+          
+            
             // 
-            // GameControl
+            // lblAttempts
+            // 
+            this.lblAttempts.BackColor = System.Drawing.Color.Transparent;
+            this.lblAttempts.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblAttempts.ForeColor = System.Drawing.Color.Black;
+            this.lblAttempts.Location = new System.Drawing.Point(0, 0);
+            this.lblAttempts.Name = "lblAttempts";
+            this.lblAttempts.Size = new System.Drawing.Size(200, 56);
+            this.lblAttempts.TabIndex = 1;
+            this.lblAttempts.Text = "Attempts: 10";
+            this.lblAttempts.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAttempts.Visible = false;
+            // 
+            // GameplayControl
             // 
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblTimer);
-            this.Name = "GameControl";
+            this.Controls.Add(this.lblAttempts);
+            this.Name = "GameplayControl";
             this.Size = new System.Drawing.Size(1584, 600);
             this.Load += new System.EventHandler(this.GameControl_Load);
+            //this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameplayControl_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
