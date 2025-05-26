@@ -50,7 +50,10 @@ namespace FirstHomeWork
             InitializeGameModeElements();
             InitializeImages(level);
             FindDifferences(inflationValue);
-            ShowDebuggingForm();
+            if (SettingsManager.IsDebugMode)
+            {
+                ShowDebuggingForm();
+            }
         }
 
         // init the game
@@ -86,7 +89,7 @@ namespace FirstHomeWork
 
         private void InitializeTimer()
         {
-           
+
 
             if (gameTimer != null)
             {
@@ -138,7 +141,7 @@ namespace FirstHomeWork
         //game logic
         #region
 
-        
+
         private void OnGameWon()
         {
             isGameEnded = true;
@@ -147,12 +150,12 @@ namespace FirstHomeWork
             winDialog.ShowDialog();
             Console.WriteLine(isGameEnded);
 
-           
+
             if (df != null)
             {
                 df.Close();
             }
-           
+
             parent.LoadControl(new MainMenuControl(parent));
 
             if (this.Parent is Form parentForm)
@@ -210,7 +213,7 @@ namespace FirstHomeWork
 
             differencesCount = differences.Count;
             this.differencesFoundLabel.Text = $"{differencesCount} / {discoveredDifferencesCount}";
-           
+
             df = new DebugingForm(diff.ToBitmap(), gray.ToBitmap());
         }
 
@@ -404,9 +407,9 @@ namespace FirstHomeWork
         }
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            if (isGameEnded)  return; 
+            if (isGameEnded) return;
             Console.WriteLine("Tike: " + isGameEnded);
-            
+
             timeLeftInSeconds--;
             UpdateTimerDisplay();
 
@@ -444,7 +447,7 @@ namespace FirstHomeWork
             int minutes = timeLeftInSeconds / 60;
             int seconds = timeLeftInSeconds % 60;
             lblTimer.Text = $"Timer: {minutes:00}:{seconds:00}";
-           
+
 
             if (timeLeftInSeconds <= 10)
             {

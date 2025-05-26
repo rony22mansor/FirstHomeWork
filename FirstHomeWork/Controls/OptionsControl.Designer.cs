@@ -42,10 +42,13 @@
             this.soundVolumePanel = new System.Windows.Forms.Panel();
             this.lblSoundVolume = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.volumeTrackBar = new Guna.UI2.WinForms.Guna2TrackBar();
+            this.debugModePanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.debugModeCheck = new Guna.UI2.WinForms.Guna2CheckBox();
             this.mainPanel.SuspendLayout();
             this.vStack.SuspendLayout();
             this.playerNamePanel.SuspendLayout();
             this.soundVolumePanel.SuspendLayout();
+            this.debugModePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -55,7 +58,7 @@
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Padding = new System.Windows.Forms.Padding(100, 200, 100, 200);
+            this.mainPanel.Padding = new System.Windows.Forms.Padding(100, 175, 100, 175);
             this.mainPanel.Size = new System.Drawing.Size(1533, 834);
             this.mainPanel.TabIndex = 6;
             // 
@@ -67,16 +70,18 @@
             this.vStack.Controls.Add(this.title, 0, 0);
             this.vStack.Controls.Add(this.playerNamePanel, 0, 1);
             this.vStack.Controls.Add(this.soundVolumePanel, 0, 2);
+            this.vStack.Controls.Add(this.debugModePanel, 0, 4);
             this.vStack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vStack.Location = new System.Drawing.Point(100, 200);
+            this.vStack.Location = new System.Drawing.Point(100, 175);
             this.vStack.Margin = new System.Windows.Forms.Padding(0);
             this.vStack.Name = "vStack";
-            this.vStack.RowCount = 4;
+            this.vStack.RowCount = 5;
             this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.27189F));
             this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.1106F));
             this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.42396F));
             this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.19355F));
-            this.vStack.Size = new System.Drawing.Size(1333, 434);
+            this.vStack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.vStack.Size = new System.Drawing.Size(1333, 484);
             this.vStack.TabIndex = 1;
             // 
             // saveBtn
@@ -101,7 +106,7 @@
             this.saveBtn.ShadowDecoration.Depth = 60;
             this.saveBtn.ShadowDecoration.Enabled = true;
             this.saveBtn.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.saveBtn.Size = new System.Drawing.Size(333, 71);
+            this.saveBtn.Size = new System.Drawing.Size(333, 70);
             this.saveBtn.TabIndex = 11;
             this.saveBtn.Text = "Save";
             this.saveBtn.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
@@ -208,6 +213,34 @@
             this.volumeTrackBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.volumeTrackBar.Value = 70;
             // 
+            // debugModePanel
+            // 
+            this.debugModePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.debugModePanel.Controls.Add(this.debugModeCheck);
+            this.debugModePanel.Location = new System.Drawing.Point(3, 436);
+            this.debugModePanel.Name = "debugModePanel";
+            this.debugModePanel.Size = new System.Drawing.Size(1327, 45);
+            this.debugModePanel.TabIndex = 12;
+            // 
+            // debugModeCheck
+            // 
+            this.debugModeCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.debugModeCheck.AutoSize = true;
+            this.debugModeCheck.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.debugModeCheck.CheckedState.BorderRadius = 4;
+            this.debugModeCheck.CheckedState.BorderThickness = 4;
+            this.debugModeCheck.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.debugModeCheck.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.debugModeCheck.Location = new System.Drawing.Point(599, 5);
+            this.debugModeCheck.Name = "debugModeCheck";
+            this.debugModeCheck.Size = new System.Drawing.Size(156, 32);
+            this.debugModeCheck.TabIndex = 13;
+            this.debugModeCheck.Text = "Debug Mode";
+            this.debugModeCheck.UncheckedState.BorderColor = System.Drawing.Color.Silver;
+            this.debugModeCheck.UncheckedState.BorderRadius = 4;
+            this.debugModeCheck.UncheckedState.BorderThickness = 4;
+            this.debugModeCheck.UncheckedState.FillColor = System.Drawing.Color.Silver;
+            // 
             // OptionsControl
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -221,11 +254,15 @@
             this.playerNamePanel.PerformLayout();
             this.soundVolumePanel.ResumeLayout(false);
             this.soundVolumePanel.PerformLayout();
+            this.debugModePanel.ResumeLayout(false);
+            this.debugModePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2Panel debugModePanel;
+        private Guna.UI2.WinForms.Guna2CheckBox debugModeCheck;
     }
 }
