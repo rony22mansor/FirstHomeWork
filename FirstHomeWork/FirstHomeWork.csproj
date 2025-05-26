@@ -7,7 +7,7 @@
     <ProjectGuid>{18BB5394-7D36-428D-A714-FB9A3A44A798}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FirstHomeWork</RootNamespace>
-    <AssemblyName>FirstHomeWork</AssemblyName>
+    <AssemblyName>Spot The Difference</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -243,7 +243,6 @@
       <DependentUpon>WinDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Enums.cs" />
-    <Compile Include="Helpers\FeedbackIcon.cs" />
     <Compile Include="Helpers\SoundPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -266,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoseDialog.resx">
       <DependentUpon>LoseDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WinDialog.resx">
       <DependentUpon>WinDialog.cs</DependentUpon>
@@ -298,13 +300,12 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-graduation-cap-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\x64\Debug\cvextern.dll" />
+    <Content Include="bin\x64\Debug\cvextern.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Graphics\win.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -10,5 +10,6 @@ namespace FirstHomeWork
     {
         public static int Volume { get; set; } = 50;
         public static string PlayerName { get; set; } = null;
+        public static bool IsDebugMode { get; set; } = false;
     }
 }
