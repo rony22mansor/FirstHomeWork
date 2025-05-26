@@ -12,6 +12,7 @@ namespace FirstHomeWork
 {
     public partial class MainForm : Form
     {
+
         public MainForm()
         {
             this.WindowState = FormWindowState.Maximized;
@@ -35,5 +36,7 @@ namespace FirstHomeWork
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+       
     }
 }

@@ -206,6 +206,7 @@
             this.volumeTrackBar.Size = new System.Drawing.Size(329, 23);
             this.volumeTrackBar.TabIndex = 3;
             this.volumeTrackBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.volumeTrackBar.Value = 70;
             // 
             // OptionsControl
             // 

@@ -8,7 +8,7 @@ namespace FirstHomeWork
 {
     public static class SettingsManager
     {
-        public static float Volume { get; set; } = 0.5f; // Default volume
-        public static string PlayerName { get; set; } = "Player";
+        public static int Volume { get; set; } = 50;
+        public static string PlayerName { get; set; } = null;
     }
 }

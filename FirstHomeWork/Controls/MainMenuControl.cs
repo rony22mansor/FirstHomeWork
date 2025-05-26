@@ -6,7 +6,6 @@ namespace FirstHomeWork
     public partial class MainMenuControl : UserControl
     {
         private MainForm parent;
-
         public MainMenuControl(MainForm parentForm)
         {
             InitializeComponent();

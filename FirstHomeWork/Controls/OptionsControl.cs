@@ -5,7 +5,7 @@ namespace FirstHomeWork
 {
     public partial class OptionsControl : UserControl
     {
-        public float Volume => volumeTrackBar.Value / 100f;
+        public int Volume => volumeTrackBar.Value;
         public string PlayerName => txtPlayerName.Text;
 
         private MainForm parent;
@@ -13,12 +13,13 @@ namespace FirstHomeWork
         public OptionsControl(MainForm parentForm)
         {
             InitializeComponent();
+            volumeTrackBar.Value = SettingsManager.Volume;
+            txtPlayerName.Text = SettingsManager.PlayerName;
             parent = parentForm;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Store the settings globally
             SettingsManager.PlayerName = this.PlayerName;
             SettingsManager.Volume = this.Volume;
             Console.WriteLine(SettingsManager.Volume);
