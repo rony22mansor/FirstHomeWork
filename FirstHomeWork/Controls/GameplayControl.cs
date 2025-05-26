@@ -36,6 +36,8 @@ namespace FirstHomeWork
         private int discoveredDifferencesCount = 0;
         private Timer fadeTimer;
         private int fadeAlpha = 255;
+        private bool isGameEnded = false;
+
 
         #endregion
 
@@ -84,6 +86,8 @@ namespace FirstHomeWork
 
         private void InitializeTimer()
         {
+           
+
             if (gameTimer != null)
             {
                 gameTimer.Tick -= GameTimer_Tick;
@@ -133,15 +137,22 @@ namespace FirstHomeWork
 
         //game logic
         #region
+
+        
         private void OnGameWon()
         {
+            isGameEnded = true;
             sp.PlaySound(@"Resources\Sounds\congrats.wav");
             WinDialog winDialog = new WinDialog();
             winDialog.ShowDialog();
+            Console.WriteLine(isGameEnded);
+
+           
             if (df != null)
             {
                 df.Close();
             }
+           
             parent.LoadControl(new MainMenuControl(parent));
 
             if (this.Parent is Form parentForm)
@@ -155,6 +166,8 @@ namespace FirstHomeWork
             sp.PlaySound(@"Resources\Sounds\lose.wav");
             LoseDialog loseDialog = new LoseDialog();
             loseDialog.ShowDialog();
+            isGameEnded = true;
+
             if (df != null)
             {
                 df.Close();
@@ -197,7 +210,7 @@ namespace FirstHomeWork
 
             differencesCount = differences.Count;
             this.differencesFoundLabel.Text = $"{differencesCount} / {discoveredDifferencesCount}";
-
+           
             df = new DebugingForm(diff.ToBitmap(), gray.ToBitmap());
         }
 
@@ -391,6 +404,9 @@ namespace FirstHomeWork
         }
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+            if (isGameEnded)  return; 
+            Console.WriteLine("Tike: " + isGameEnded);
+            
             timeLeftInSeconds--;
             UpdateTimerDisplay();
 
@@ -428,7 +444,7 @@ namespace FirstHomeWork
             int minutes = timeLeftInSeconds / 60;
             int seconds = timeLeftInSeconds % 60;
             lblTimer.Text = $"Timer: {minutes:00}:{seconds:00}";
-
+           
 
             if (timeLeftInSeconds <= 10)
             {
